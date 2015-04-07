@@ -1,0 +1,16 @@
+.money_row {
+	display: inline;
+	width: 800;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 3px;
+}
+
+.data_table {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
