@@ -1,5 +1,7 @@
 FN.KP = {};
 
+FN.KP.panelCreated = false;
+
 FN.KP.CreatePanel = function() {
 	FN.PM.SetBanner("Kingdom");
 	
@@ -39,6 +41,17 @@ FN.KP.CreateResourceRow = function(name) {
 	FN.KP.resourceTable.append(addRow);
 };
 
+FN.KP.LoadPanel = function() {
+	if (!FN.KP.panelCreated) {
+		FN.KP.panelCreated = true;
+		FN.KP.CreatePanel();
+	} else {
+		FN.PM.LoadComponent(FN.KP.townTable);
+		FN.PM.LoadComponent(FN.KP.resourceTable);
+		FN.PM.LoadComponent(FN.KP.moneyRow);
+	}
+};
+
 FN.KP.ChangeResource = function(resource, amount) {
 	FN.KP[resource].text = amount;
 };
@@ -48,7 +61,14 @@ FN.KP.ChangeMoney = function(newAmount) {
 };
 
 FN.KP.AddTown = function(town) {
-	
+	var addRow = $("<tr>" +
+			"<td>" + town.name + "</td>" +
+			"<td>" + town.type + "</td>" +
+			"<td>" + town.people + "</td>" +
+			"<td>"+ town.wealth + "</td>" +
+			"<td>" + town.food + "</td>" +
+			"<td>" + town.happiness + "</td></tr>");
+	FN.KP.townTable.append(addRow);
 };
 
 

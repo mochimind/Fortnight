@@ -1,11 +1,7 @@
 FN.PM = {};
 
-FN.PM.activePanel = null;
-
 FN.PM.UnloadPanel = function() {
-	if (FN.PM.activePanel != null) {
-		$("#container").empty();
-	}
+	$("#container").empty();
 };
 
 FN.PM.LoadComponent = function(component) {
