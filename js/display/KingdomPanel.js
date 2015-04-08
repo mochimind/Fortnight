@@ -1,8 +1,6 @@
 FN.KP = {};
 
-FN.KP.panelCreated = false;
-
-FN.KP.CreatePanel = function() {
+FN.KP.Init = function() {
 	FN.PM.SetBanner("Kingdom");
 	
 	FN.KP.townTable = $("<table class='data_table'></table>");
@@ -15,11 +13,9 @@ FN.KP.CreatePanel = function() {
 			"<th>Happiness</th></tr>");
 	FN.KP.townTable.append($("<caption>Towns</caption>"));
 	FN.KP.townTable.append(header);
-	FN.PM.LoadComponent(FN.KP.townTable);
 	
 	FN.KP.resourceTable = $("<table class='data_table'></table>");
 	FN.KP.resourceTable.append($("<caption>Resources</caption>"));
-	FN.PM.LoadComponent(FN.KP.resourceTable);
 	
 	FN.KP.CreateResourceRow("Food");
 	FN.KP.CreateResourceRow("Iron");
@@ -31,7 +27,6 @@ FN.KP.CreatePanel = function() {
 	FN.KP.moneyRow.append("<span>Money:</span>");
 	FN.KP.moneyNumber = $("<span>0</span>");
 	FN.KP.moneyRow.append(FN.KP.moneyNumber);
-	FN.PM.LoadComponent(FN.KP.moneyRow);
 };
 
 FN.KP.CreateResourceRow = function(name) {
@@ -42,14 +37,9 @@ FN.KP.CreateResourceRow = function(name) {
 };
 
 FN.KP.LoadPanel = function() {
-	if (!FN.KP.panelCreated) {
-		FN.KP.panelCreated = true;
-		FN.KP.CreatePanel();
-	} else {
-		FN.PM.LoadComponent(FN.KP.townTable);
-		FN.PM.LoadComponent(FN.KP.resourceTable);
-		FN.PM.LoadComponent(FN.KP.moneyRow);
-	}
+	FN.PM.LoadComponent(FN.KP.townTable);
+	FN.PM.LoadComponent(FN.KP.resourceTable);
+	FN.PM.LoadComponent(FN.KP.moneyRow);
 };
 
 FN.KP.ChangeResource = function(resource, amount) {

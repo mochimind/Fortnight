@@ -1,6 +1,6 @@
 FN.Follower = {};
 
-FN.Follower.CreateFollower = function(name,stats, requirements) {
+FN.Follower.CreateFollower = function(name, stats, requirements) {
 	var obj = {};
 	obj.stats = {'loyalty': 0,
 			'diplomacy': 0,
@@ -31,6 +31,12 @@ FN.Follower.CreateFollower = function(name,stats, requirements) {
 	}
 	
 	obj.name = name;
+	obj.curQuest = "none";
+	obj.questType = "none";
+	
+	FN.FP.AddFollower(obj);
+	FN.AP.AddFollower(obj);
+
 	return obj;
 };
 
