@@ -1,23 +1,35 @@
 FN.AP = {};
 
+FN.AP.initialized = false;
+
 FN.AP.Init = function() {
+	if (FN.AP.initialized) { return; }
+	FN.AP.initialized = true;
+	
 	FN.AP.questLabel = $("<div>Quests</div>");
 	FN.AP.questList = $("<ul></ul>");
-	FN.AP.vassalsTable = $("<table></table>")
-						.append("<caption>Vassals</caption>")
-						.append("<tr><th>Vassal</th><th>Doing</th><th>Work Type</th></tr>");
+	FN.AP.vassalsTable = $("<table></table>");
 };
 
 FN.AP.LoadPanel = function() {
+	FN.AP.Init();
 	FN.PM.LoadComponent(FN.AP.questLabel);
 	FN.PM.LoadComponent(FN.AP.questList);
-	FN.PM.LoadComponent(FN.AP.vassalsTable);	
+	FN.PM.LoadComponent(FN.AP.vassalsTable);
+	
+	FN.AP.vassalsTable.empty()
+				.append("<caption>Vassals</caption>")
+				.append("<tr><th>Vassal</th><th>Doing</th><th>Work Type</th></tr>");
+	for (var i=0 ; i<FN.VassalMgr.vassals.length ; i++) {
+		FN.AP.AddVassal(FN.VassalMgr.vassals[i]);
+	}
 };
 
 FN.AP.AddVassal = function(vassal) {
+	FN.AP.Init();
 	FN.AP.vassalsTable.append($("<tr><td>" + vassal.name + 
-				"</td><td>" + vassal.curQuest + 
-				"</td><td>" + vassal.questType + "</td></tr>"));
+				"</td><td>" + vassal.curTask + 
+				"</td><td>" + vassal.taskType + "</td></tr>"));
 };
 
 

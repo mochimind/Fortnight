@@ -1,11 +1,13 @@
 FN.Task = {};
 
-FN.Task.NewTask = function(taskname, ticks, requirements, reward) {
+FN.Task.NewTask = function(name, type, description, ticks, solutions, reward) {
 	var obj = {};
 	
-	obj.taskname = taskname;
+	obj.name = name;
+	obj.type = type;
+	obj.description = description;
 	obj.ticks = ticks;
-	obj.requirements = requirements;
+	obj.solutions = solutions;
 	obj.completed = 0;
 	obj.started = false;
 	obj.reward = reward;

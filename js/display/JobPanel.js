@@ -4,6 +4,7 @@ FN.JP.initialized = false;
 
 FN.JP.Init = function() {
 	if (FN.JP.initialized) { return; }
+	FN.JP.initialized = true;
 
 	FN.JP.vassals = $("<table></table>");
 	FN.JP.container = $("<div class='job_popup'></div>")

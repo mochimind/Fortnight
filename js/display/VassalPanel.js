@@ -1,6 +1,11 @@
 FN.VP = {};
 
+FN.VP.initialized = false;
+
 FN.VP.Init = function() {
+	if (FN.VP.initialized) { return; }
+	FN.VP.initialized = true;
+	
 	var leftCell = $("<td rowspan='2'></td>");
 	var topRightCell = $("<td></td>");
 	var botRightCell = $("<td></td>");
@@ -12,8 +17,7 @@ FN.VP.Init = function() {
 	.append($("<tr></tr>")
 			.append(botRightCell));
 	
-	FN.VP.vassalTable = $("<table id='data_table'></table>")
-							.append($("<caption>Vassals</caption>"));
+	FN.VP.vassalTable = $("<table id='data_table'></table>");
 	FN.VP.statTable = $("<table id='data_table'></table>")
 							.append($("<caption>Stats</caption>"));
 	FN.VP.happinessTable = $("<table id='data_table'></table>")
@@ -25,7 +29,15 @@ FN.VP.Init = function() {
 };
 
 FN.VP.LoadPanel = function() {
+	FN.VP.Init();
 	FN.PM.LoadComponent(FN.VP.container);
+	
+	FN.VP.vassalTable.empty()
+			.append($("<caption>Vassals</caption>"));
+	
+	for (var i=0 ; i<FN.VassalMgr.vassals.length ; i++) {
+		FN.VP.AddVassal(FN.VassalMgr.vassals[i]);
+	}
 };
 
 FN.VP.AddVassal = function(vassal) {

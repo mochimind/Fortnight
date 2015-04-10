@@ -34,8 +34,6 @@ FN.Vassal.CreateVassal = function(name, stats, requirements) {
 	obj.curTask = "none";
 	obj.taskType = "none";
 	
-	FN.VP.AddVassal(obj);
-	FN.AP.AddVassal(obj);
 	FN.VassalMgr.AddVassal(obj);
 
 	return obj;

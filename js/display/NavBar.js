@@ -1,9 +1,9 @@
 FN.NB = {};
 
 FN.NB.Init = function () {
-	$("#kingdom_nav").click(function() {
+	$("#location_nav").click(function() {
 		FN.PM.UnloadPanel();
-		FN.KP.LoadPanel();
+		FN.LP.LoadPanel();
 	});
 	
 	$("#vassals_nav").click(function() {

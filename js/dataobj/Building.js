@@ -5,9 +5,8 @@ FN.Building.CreateBuilding = function(name, description, actions) {
 	
 	obj.name = name;
 	obj.description = description;
+	obj.built = false;
 	obj.actions = actions;
-	
-	FN.SP.LoadBuilding(obj);
 	
 	return obj;
 };

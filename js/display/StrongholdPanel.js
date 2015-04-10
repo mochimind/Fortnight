@@ -1,6 +1,11 @@
 FN.SP = {};
 
+FN.SP.initialized = false;
+
 FN.SP.Init = function() {
+	if (FN.SP.initialized) { return; }
+	FN.SP.initialized = true;
+	
 	var leftCell = $("<td rowspan='2'></td>");
 	var topRightCell = $("<td></td>");
 	var botRightCell = $("<td></td>");
@@ -26,6 +31,7 @@ FN.SP.Init = function() {
 };
 
 FN.SP.LoadPanel = function() {
+	FN.SP.Init();
 	FN.PM.LoadComponent(FN.SP.container);
 };
 
