@@ -1,6 +1,7 @@
 FN.VP = {};
 
 FN.VP.initialized = false;
+FN.VP.code = "VP";
 
 FN.VP.Init = function() {
 	if (FN.VP.initialized) { return; }
@@ -30,6 +31,8 @@ FN.VP.Init = function() {
 
 FN.VP.LoadPanel = function() {
 	FN.VP.Init();
+	FN.PM.activePanel = FN.VP.code;
+	
 	FN.PM.LoadComponent(FN.VP.container);
 	
 	FN.VP.vassalTable.empty()

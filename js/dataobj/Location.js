@@ -14,5 +14,9 @@ FN.Location.Create = function(name, type, description) {
 
 FN.Location.AddTask = function(location, task) {
 	location.tasks.push(task);
+	
+	if (FN.PM.activePanel == FN.LP.code) {
+		FN.LP.LoadPanel();
+	}
 };
 

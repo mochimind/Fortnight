@@ -1,5 +1,7 @@
 FN.PM = {};
 
+FN.PM.activePanel = "";
+
 FN.PM.UnloadPanel = function() {
 	$("#container").empty();
 };

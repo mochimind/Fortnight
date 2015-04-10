@@ -1,6 +1,7 @@
 FN.LP = {};
 
 FN.LP.initialized = false;
+FN.LP.code = "LP";
 
 FN.LP.Init = function() {
 	if (FN.LP.initialized) { return; }
@@ -39,6 +40,7 @@ FN.LP.Init = function() {
 
 FN.LP.LoadPanel = function() {
 	FN.LP.Init();
+	FN.PM.activePanel = FN.LP.code;
 	
 	FN.LP.placeList.empty();
 	FN.LP.description.text("");

@@ -1,6 +1,7 @@
 FN.AP = {};
 
 FN.AP.initialized = false;
+FN.AP.code = "AP";
 
 FN.AP.Init = function() {
 	if (FN.AP.initialized) { return; }
@@ -13,6 +14,8 @@ FN.AP.Init = function() {
 
 FN.AP.LoadPanel = function() {
 	FN.AP.Init();
+	FN.PM.activePanel = FN.AP.code;
+	
 	FN.PM.LoadComponent(FN.AP.questLabel);
 	FN.PM.LoadComponent(FN.AP.questList);
 	FN.PM.LoadComponent(FN.AP.vassalsTable);
