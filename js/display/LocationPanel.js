@@ -25,6 +25,7 @@ FN.LP.Init = function() {
 					.append(FN.LP.description);
 	
 	FN.LP.taskList = $("<ul></ul>");
+	FN.LP.startTaskButton = $("<button type='button'>Start Task</button>");
 	FN.LP.taskDescription = $("<div></div>");
 	botRightCell.append($("<div>Tasks</div>"))
 					.append($("<table></table>")
@@ -32,7 +33,8 @@ FN.LP.Init = function() {
 								.append($("<td></td>")
 										.append(FN.LP.taskList))
 								.append($("<td></td>")
-										.append(FN.LP.taskDescription)));
+										.append(FN.LP.taskDescription)))
+					.append(FN.LP.startTaskButton);
 };
 
 FN.LP.LoadPanel = function() {
@@ -42,6 +44,7 @@ FN.LP.LoadPanel = function() {
 	FN.LP.description.text("");
 	FN.LP.taskList.empty();
 	FN.LP.taskDescription.text("");
+	FN.LP.startTaskButton.attr("disabled", true);
 	
 	FN.PM.LoadComponent(FN.LP.container);
 	
@@ -59,12 +62,21 @@ FN.LP.AddLocation = function(location) {
 				
 				for (var i=0 ; i<location.tasks.length ; i++) {
 					FN.LP.taskList.append($("<li>" + location.tasks[i].name + "</li>")
-							.click(function(description) {
+							.click(function(task) {
 								return function() { 
-									FN.LP.taskDescription.text(description); 
+									FN.LP.taskDescription.text(task.description); 
+
+									// add a start button
+									FN.LP.startTaskButton.attr("disabled", false);
+									FN.LP.startTaskButton.click(function() {
+										FN.JP.LoadPanel(function(vassal) {
+											FN.Task.StartTask(task);
+										});
+									});
 								};
-							}(location.tasks[i].description)));
+							}(location.tasks[i])));
 				}
+				
 			});
 	
 };

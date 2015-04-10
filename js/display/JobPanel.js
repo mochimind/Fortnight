@@ -33,7 +33,7 @@ FN.JP.AddVassal = function(vassal) {
 			"<td>" + vassal.curTask + "</td></tr>");
 	if (vassal.curTask == "none") {
 		newLine.click(function() {
-			callback(vassal);
+			FN.JP.callback(vassal);
 			FN.JP.HidePanel();
 		});
 	} else {
@@ -44,7 +44,7 @@ FN.JP.AddVassal = function(vassal) {
 };
 
 FN.JP.HidePanel = function() {
-	FN.JP.vassals.remove();
+	FN.JP.container.remove();
 };
 
 

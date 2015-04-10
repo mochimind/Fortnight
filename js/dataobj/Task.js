@@ -15,9 +15,12 @@ FN.Task.NewTask = function(name, type, description, ticks, solutions, reward) {
 	return obj;
 };
 
-FN.Task.AssignTask = function(task, doer) {
+FN.Task.StartTask = function(task, doer) {
 	task.doer = doer;
 	task.started = true;
+	console.log('task started');
+	
+	FN.TaskMgr.RegisterTask(task);
 };
 
 FN.Task.Tick = function(task) {
