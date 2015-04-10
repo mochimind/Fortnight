@@ -27,6 +27,8 @@ FN.VP.Init = function() {
 	leftCell.append(FN.VP.vassalTable);
 	topRightCell.append(FN.VP.statTable);
 	botRightCell.append(FN.VP.happinessTable);
+	
+	FN.VP.RefreshPanel();
 };
 
 FN.VP.LoadPanel = function() {
@@ -34,10 +36,16 @@ FN.VP.LoadPanel = function() {
 	FN.PM.activePanel = FN.VP.code;
 	
 	FN.PM.LoadComponent(FN.VP.container);
-	
+};
+
+FN.VP.HidePanel = function() {
+	FN.VP.container.remove();
+};
+
+FN.VP.RefreshPanel = function() {
 	FN.VP.vassalTable.empty()
-			.append($("<caption>Vassals</caption>"));
-	
+	.append($("<caption>Vassals</caption>"));
+
 	for (var i=0 ; i<FN.VassalMgr.vassals.length ; i++) {
 		FN.VP.AddVassal(FN.VassalMgr.vassals[i]);
 	}

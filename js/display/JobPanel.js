@@ -9,12 +9,18 @@ FN.JP.Init = function() {
 	FN.JP.vassals = $("<table></table>");
 	FN.JP.container = $("<div class='job_popup'></div>")
 					.append(FN.JP.vassals);
+	
+	FN.JP.RefreshPanel();
 };
 
 FN.JP.LoadPanel = function(callback) {
 	FN.JP.callback = callback;
 	FN.JP.Init();
 	
+	FN.PM.LoadComponent(FN.JP.container);
+};
+
+FN.JP.RefreshPanel = function() {
 	FN.JP.vassals.empty()
 				.append($("<caption>Vassals</caption>"))
 				.append($("<tr><th>Name</th><th>Status</th></tr>"));
@@ -22,8 +28,6 @@ FN.JP.LoadPanel = function(callback) {
 	for (var i=0 ; i<FN.VassalMgr.vassals.length ; i++) {
 		FN.JP.AddVassal(FN.VassalMgr.vassals[i]);
 	}
-	
-	FN.PM.LoadComponent(FN.JP.container);
 };
 
 FN.JP.AddVassal = function(vassal) {

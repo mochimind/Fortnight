@@ -3,7 +3,13 @@ FN.PM = {};
 FN.PM.activePanel = "";
 
 FN.PM.UnloadPanel = function() {
-	$("#container").empty();
+	if (FN.PM.activePanel == FN.LP.code) {
+		FN.LP.HidePanel();
+	} else if (FN.PM.activePanel == FN.AP.code) {
+		FN.AP.HidePanel();
+	} else if (FN.PM.activePanel == FN.VP.code) {
+		FN.VP.HidePanel();
+	}
 };
 
 FN.PM.LoadComponent = function(component) {

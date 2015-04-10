@@ -36,19 +36,29 @@ FN.LP.Init = function() {
 								.append($("<td></td>")
 										.append(FN.LP.taskDescription)))
 					.append(FN.LP.startTaskButton);
+	
+	FN.LP.RefreshPanel();
 };
 
 FN.LP.LoadPanel = function() {
 	FN.LP.Init();
 	FN.PM.activePanel = FN.LP.code;
 	
+	FN.PM.LoadComponent(FN.LP.container);
+
+};
+
+FN.LP.HidePanel = function() {
+	FN.LP.container.remove();
+};
+
+FN.LP.RefreshPanel = function() {
 	FN.LP.placeList.empty();
 	FN.LP.description.text("");
 	FN.LP.taskList.empty();
 	FN.LP.taskDescription.text("");
 	FN.LP.startTaskButton.attr("disabled", true);
 	
-	FN.PM.LoadComponent(FN.LP.container);
 	
 	for (var i=0 ; i<FN.LocationMgr.locations.length ; i++) {
 		FN.LP.AddLocation(FN.LocationMgr.locations[i]);
@@ -64,6 +74,9 @@ FN.LP.AddLocation = function(location) {
 				
 				for (var i=0 ; i<location.tasks.length ; i++) {
 					FN.LP.taskList.append($("<li>" + location.tasks[i].name + "</li>")
+							// we need to pass a specific task in, but we'll lose the i variable when this fcn is called
+							// so we need to create a function that passes another function in with the task we want already
+							// in the context
 							.click(function(task) {
 								return function() { 
 									FN.LP.taskDescription.text(task.description); 
