@@ -6,9 +6,9 @@ FN.NB.Init = function () {
 		FN.KP.LoadPanel();
 	});
 	
-	$("#followers_nav").click(function() {
+	$("#vassals_nav").click(function() {
 		FN.PM.UnloadPanel();
-		FN.FP.LoadPanel();
+		FN.VP.LoadPanel();
 	});
 	
 	$("#assignments_nav").click(function() {
@@ -17,7 +17,8 @@ FN.NB.Init = function () {
 	});
 	
 	$("#stronghold_nav").click(function() {
-		FN.PM.UnloadPanel();
-		FN.SP.LoadPanel();
+		//FN.PM.UnloadPanel();
+		//FN.SP.LoadPanel();
+		FN.JP.LoadPanel();
 	});
 };

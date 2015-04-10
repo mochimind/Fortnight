@@ -4,7 +4,7 @@ FN.Main = {};
 $(function(){
 	FN.NB.Init();
 	FN.KP.Init();
-	FN.FP.Init();
+	FN.VP.Init();
 	FN.AP.Init();
 	FN.SP.Init();
 	
@@ -12,7 +12,7 @@ $(function(){
 	var stronghold = FN.Town.CreateTown("stronghold", 10, 1, "castle", 100, 10);
 	FN.KP.AddTown(stronghold);
 	
-	var hero = FN.Follower.CreateFollower("hero", [['diplomacy', 10]], [['power', 10]]);
+	var hero = FN.Vassal.CreateVassal("hero", [['diplomacy', 10]], [['power', 10]]);
 	
 	var buildAction = FN.BuildAct.Create("build a building", null);
 	var builderHall = FN.Building.CreateBuilding("Labor Camp", "The Labor Camp is where your followers" +

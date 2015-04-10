@@ -1,6 +1,6 @@
-FN.Follower = {};
+FN.Vassal = {};
 
-FN.Follower.CreateFollower = function(name, stats, requirements) {
+FN.Vassal.CreateVassal = function(name, stats, requirements) {
 	var obj = {};
 	obj.stats = {'loyalty': 0,
 			'diplomacy': 0,
@@ -31,11 +31,12 @@ FN.Follower.CreateFollower = function(name, stats, requirements) {
 	}
 	
 	obj.name = name;
-	obj.curQuest = "none";
-	obj.questType = "none";
+	obj.curTask = "none";
+	obj.taskType = "none";
 	
-	FN.FP.AddFollower(obj);
-	FN.AP.AddFollower(obj);
+	FN.VP.AddVassal(obj);
+	FN.AP.AddVassal(obj);
+	FN.VassalMgr.AddVassal(obj);
 
 	return obj;
 };

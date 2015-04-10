@@ -14,3 +14,13 @@ th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
+
+.job_popup {
+	z-index: 1;
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	background-color: #cabc61;
+}
